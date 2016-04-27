@@ -1,6 +1,4 @@
-# D_CS_week15
-
-# PersonSerializer
+﻿# PersonSerializer
 1. Prepare a category named “Person”, and the objects of it contains the names of persons, addresses, phone numbers,
 date of data recording and a serial number! Make the class to be saved (serialization) but the serial number should not be saved!
 2. Prepare the operation of clicking the “Store” button that manages the operation, which saves the objectum of “Person” -

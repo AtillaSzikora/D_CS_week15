@@ -1,7 +1,6 @@
 ﻿using System;
 
 namespace PersonSerializer {
-
 	[Serializable]
 	internal class Person {
 

@@ -15,4 +15,4 @@ namespace PersonSerializer {
 
 		public override string ToString() {
 			return $"[name: {Name}, address: {Address}, phone: {Phone}]"; }
-}	}
+} }

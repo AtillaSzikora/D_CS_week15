@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace PersonSerializer {
 	internal class Serialization {
-		public static string FileName = "person01.dat";
+		public static string FileName;
 		private static readonly SoapFormatter Soap = new SoapFormatter();
 
 		public static void SetFileName() {
@@ -21,5 +21,7 @@ namespace PersonSerializer {
 
 		public static Person Deserialize(string fileName) {
 			FileStream fso = new FileStream(fileName, FileMode.Open);
-			return (Person) Soap.Deserialize(fso); }
+			Person person = (Person) Soap.Deserialize(fso);
+			fso.Close();
+			return person; }
 } }

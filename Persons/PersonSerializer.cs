@@ -7,6 +7,7 @@ namespace PersonSerializer {
 		[STAThread]
 		private static void Main() {
 			Serialization.CreateFile();
+			Serialization.Serialize();
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new PersonSerializationForm()); }

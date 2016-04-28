@@ -9,7 +9,7 @@ namespace PersonSerializer {
             Address = address;
             Phone = phone; }
 
-        public string Name { get; }
+		public string Name { get; }
         public string Address { get; }
         public string Phone { get; }
 

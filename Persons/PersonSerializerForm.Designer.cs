@@ -125,6 +125,7 @@
 			this.Controls.Add(this.txtName);
 			this.Name = "PersonSerializationForm";
 			this.Text = "Person Serializer";
+			this.Load += new System.EventHandler(this.PersonSerializationForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -143,4 +144,3 @@
 		private System.Windows.Forms.Button btnSave;
 	}
 }
-

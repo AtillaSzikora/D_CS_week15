@@ -6,8 +6,6 @@ namespace PersonSerializer {
 		/// The main entry point for the application.
 		[STAThread]
 		private static void Main() {
-			Serialization.CreateFile();
-			Serialization.Serialize();
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new PersonSerializationForm()); }

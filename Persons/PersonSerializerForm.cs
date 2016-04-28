@@ -11,4 +11,8 @@ namespace PersonSerializer {
 				txtName.Text = person.Name;
 				txtAddress.Text = person.Address;
 				txtPhone.Text = person.Phone; } }
-} }
+
+		private void btnSave_Click (object sender, System.EventArgs e) {
+			Person person = new Person(txtName.Text, txtAddress.Text, txtPhone.Text);
+			Serialization.Serialize(person); }
+	} }

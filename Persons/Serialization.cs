@@ -4,22 +4,22 @@ using System.Windows.Forms;
 
 namespace PersonSerializer {
 	internal class Serialization {
-		public static string FileName = "person1.dat";
+		public static string FileName = "person01.dat";
 		private static readonly SoapFormatter Soap = new SoapFormatter();
 
-		public static void CreateFile() {
+		public static void SetFileName() {
 			int i = 1;
-			while (File.Exists($"person{i}.dat")) { i++; }
-			if (i < 100) { FileName = $"person{i}.dat"; }
+			while (File.Exists($"person{i.ToString("D2")}.dat")) { i++; }
+			if (i < 100) { FileName = $"person{i.ToString("D2")}.dat"; }
 			else MessageBox.Show(@"The program can not serialize more than 99 persons!"); }
 
-		public static void Serialize() {
-			Person jozsef = new Person("Jozsi", "Miskolc", "301234567");
-			FileStream fs = new FileStream(FileName, FileMode.Create);
-			Soap.Serialize(fs, jozsef);
-			fs.Close(); }
+		public static void Serialize(Person person) {
+			SetFileName();
+			FileStream fsc = new FileStream(FileName, FileMode.Create);
+			Soap.Serialize(fsc, person);
+			fsc.Close(); }
 
 		public static Person Deserialize(string fileName) {
-			FileStream fs = new FileStream(fileName, FileMode.Open);
-			return (Person) Soap.Deserialize(fs); }
+			FileStream fso = new FileStream(fileName, FileMode.Open);
+			return (Person) Soap.Deserialize(fso); }
 } }

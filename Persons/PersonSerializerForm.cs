@@ -9,28 +9,33 @@ namespace PersonSerializer {
 
 		private void PersonSerializationForm_Load(object sender, System.EventArgs e) {
 			if (File.Exists(_fileName)) {
-				ShowPerson(); } }
+				NextPerson(); } }
 
 		private void btnSave_Click (object sender, System.EventArgs e) {
-			Person person = new Person(txtName.Text, txtAddress.Text, txtPhone.Text);
+			var person = new Person(txtName.Text, txtAddress.Text, txtPhone.Text);
 			Serialization.Serialize(person);
 			MessageBox.Show($"{txtName.Text} was saved successfully."); }
 
-		private void btnNext_Click(object sender, System.EventArgs e) {
-			_i++;
-			_fileName = $"person{_i.ToString("D2")}.dat";
-			ShowPerson(); }
+		private void btnNext_Click(object sender, System.EventArgs e) { NextPerson(); }
+		private void btnPrevious_Click (object sender, System.EventArgs e) { PreviousPerson(); }
 
-		private void btnPrevious_Click (object sender, System.EventArgs e) {
-			_i--;
-			_fileName = $"person{_i.ToString("D2")}.dat";
-			ShowPerson(); }
-
-		void ShowPerson() {
+		private void NextPerson() {
 			if (File.Exists(_fileName)) {
-				Person person = Serialization.Deserialize(_fileName);
+				var person = Serialization.Deserialize(_fileName);
 				txtName.Text = person.Name;
 				txtAddress.Text = person.Address;
-				txtPhone.Text = person.Phone; }
-			else MessageBox.Show(@"There are no more persons."); }
+				txtPhone.Text = person.Phone;
+				_i++;
+				_fileName = $"person{_i.ToString("D2")}.dat"; }
+			else { MessageBox.Show(@"There are no more persons."); } }
+
+		private void PreviousPerson() {
+			if (File.Exists(_fileName)) {
+				var person = Serialization.Deserialize(_fileName);
+				txtName.Text = person.Name;
+				txtAddress.Text = person.Address;
+				txtPhone.Text = person.Phone;
+				_i--;
+				_fileName = $"person{_i.ToString("D2")}.dat";}
+			else { MessageBox.Show(@"There are no more persons."); } }
 } }

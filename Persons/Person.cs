@@ -3,14 +3,13 @@
 namespace PersonSerializer {
 	[Serializable]
 	public class Person {
+		private string _name, _address, _phone;
 
 		public Person () { }	
 		public Person(string name, string address, string phone) {
             _name = name;
             _address = address;
             _phone = phone; }
-
-		private string _name, _address, _phone;
 
 		public string Name {
 			get { return _name; }

@@ -32,6 +32,9 @@
 			this.btnPrevious = new System.Windows.Forms.Button();
 			this.btnNext = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
+			this.lstFiles = new System.Windows.Forms.ListBox();
+			this.txtPath = new System.Windows.Forms.TextBox();
+			this.lblPath = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// txtName
@@ -112,11 +115,40 @@
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
+			// lstFiles
+			// 
+			this.lstFiles.FormattingEnabled = true;
+			this.lstFiles.Location = new System.Drawing.Point(15, 185);
+			this.lstFiles.Name = "lstFiles";
+			this.lstFiles.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+			this.lstFiles.Size = new System.Drawing.Size(285, 264);
+			this.lstFiles.TabIndex = 9;
+			// 
+			// txtPath
+			// 
+			this.txtPath.Location = new System.Drawing.Point(63, 147);
+			this.txtPath.Name = "txtPath";
+			this.txtPath.Size = new System.Drawing.Size(237, 20);
+			this.txtPath.TabIndex = 10;
+			this.txtPath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PressedEnter);
+			// 
+			// lblPath
+			// 
+			this.lblPath.AutoSize = true;
+			this.lblPath.Location = new System.Drawing.Point(12, 150);
+			this.lblPath.Name = "lblPath";
+			this.lblPath.Size = new System.Drawing.Size(29, 13);
+			this.lblPath.TabIndex = 11;
+			this.lblPath.Text = "Path";
+			// 
 			// PersonSerializationForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(313, 128);
+			this.ClientSize = new System.Drawing.Size(314, 461);
+			this.Controls.Add(this.lblPath);
+			this.Controls.Add(this.txtPath);
+			this.Controls.Add(this.lstFiles);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.btnNext);
 			this.Controls.Add(this.btnPrevious);
@@ -145,5 +177,8 @@
 		private System.Windows.Forms.Button btnPrevious;
 		private System.Windows.Forms.Button btnNext;
 		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.ListBox lstFiles;
+		private System.Windows.Forms.TextBox txtPath;
+		private System.Windows.Forms.Label lblPath;
 	}
 }

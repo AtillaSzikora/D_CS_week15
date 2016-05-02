@@ -6,12 +6,14 @@ namespace PersonSerializer {
 
 		private static int _i = 1;
 		private string _fileName = $"person{_i.ToString("D2")}.dat";
+		private string _path = @"C:\GDrive\Visual Studio 2015\Projects\D_CS_week15\Persons\bin\Debug";
 		private readonly Serialization _serial = new Serialization();
 
 		public PersonSerializationForm() { InitializeComponent(); }
 
 		private void PersonSerializationForm_Load(object sender, System.EventArgs e) {
-			if (File.Exists(_fileName)) { DisplayPerson(); } }
+			if (File.Exists(_fileName)) { DisplayPerson(); }
+			DisplayFiles(); }
 
 		private void btnSave_Click (object sender, System.EventArgs e) {
 			var person = new Person(txtName.Text, txtAddress.Text, txtPhone.Text);
@@ -37,4 +39,16 @@ namespace PersonSerializer {
 				txtAddress.Text = person.Address;
 				txtPhone.Text = person.Phone; }
 			else { MessageBox.Show(@"There are no more persons."); } }
+
+		private void DisplayFiles() {
+			txtPath.Text = _path;
+			DirectoryInfo dirs = new DirectoryInfo(txtPath.Text);
+			object[] fileEntries = dirs.GetFileSystemInfos();
+			lstFiles.Items.AddRange(fileEntries); }
+
+		private void PressedEnter (object sender, KeyEventArgs e) {
+			if (e.KeyCode == Keys.Enter) {
+				lstFiles.Items.Clear();
+				_path = txtPath.Text;
+				DisplayFiles (); } }
 } }

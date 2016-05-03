@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Display.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Person.cs" />
     <Compile Include="PersonSerializerForm.cs">
       <SubType>Form</SubType>

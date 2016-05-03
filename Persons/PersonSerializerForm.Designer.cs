@@ -171,6 +171,7 @@
 			this.Controls.Add(this.txtAddress);
 			this.Controls.Add(this.txtPhone);
 			this.Controls.Add(this.txtName);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.Name = "PersonSerializationForm";
 			this.Text = "Person Serializer";
 			this.Load += new System.EventHandler(this.PersonSerializationForm_Load);

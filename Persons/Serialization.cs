@@ -4,6 +4,7 @@ using System.Xml.Serialization;
 
 namespace PersonSerializer {
 	internal class Serialization {
+
 		private string _fileName;
 		private readonly XmlSerializer _serializer = new XmlSerializer(typeof(Person));
 

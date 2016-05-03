@@ -123,6 +123,7 @@
 			this.lstFiles.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this.lstFiles.Size = new System.Drawing.Size(285, 264);
 			this.lstFiles.TabIndex = 9;
+			this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
 			// 
 			// txtPath
 			// 
@@ -130,7 +131,7 @@
 			this.txtPath.Name = "txtPath";
 			this.txtPath.Size = new System.Drawing.Size(237, 20);
 			this.txtPath.TabIndex = 10;
-			this.txtPath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PressedEnter);
+			this.txtPath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterOnPath);
 			// 
 			// lblPath
 			// 

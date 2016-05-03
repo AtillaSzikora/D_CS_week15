@@ -13,11 +13,12 @@ namespace PersonSerializer {
 
 		private void PersonSerializationForm_Load(object sender, System.EventArgs e) {
 			if (File.Exists(_fileName)) { DisplayPerson(); }
-			DisplayFiles(); }
+			DisplayFilesAndDirs(); }
 
 		private void btnSave_Click (object sender, System.EventArgs e) {
 			var person = new Person(txtName.Text, txtAddress.Text, txtPhone.Text);
 			_serial.Serialize(person);
+			DisplayFilesAndDirs();
 			MessageBox.Show($"{txtName.Text} was saved successfully."); }
 
 		private void btnNext_Click(object sender, System.EventArgs e) {
@@ -40,15 +41,21 @@ namespace PersonSerializer {
 				txtPhone.Text = person.Phone; }
 			else { MessageBox.Show(@"There are no more persons."); } }
 
-		private void DisplayFiles() {
+		private void DisplayFilesAndDirs() {
 			txtPath.Text = _path;
-			DirectoryInfo dirs = new DirectoryInfo(txtPath.Text);
-			object[] fileEntries = dirs.GetFileSystemInfos();
-			lstFiles.Items.AddRange(fileEntries); }
-
-		private void PressedEnter (object sender, KeyEventArgs e) {
-			if (e.KeyCode == Keys.Enter) {
+			if (Directory.Exists(txtPath.Text)) {
+				DirectoryInfo dirs = new DirectoryInfo(txtPath.Text);
+				object[] fileEntries = dirs.GetFileSystemInfos();
 				lstFiles.Items.Clear();
+				lstFiles.Items.AddRange(fileEntries); }
+			else { MessageBox.Show(@"There is no directory at the given path!"); } }
+
+		private void EnterOnPath (object sender, KeyEventArgs e) {
+			if (e.KeyCode == Keys.Enter) {
 				_path = txtPath.Text;
-				DisplayFiles (); } }
+				DisplayFilesAndDirs (); } }
+
+		private void lstFiles_DoubleClick (object sender, System.EventArgs e) {
+			_path += @"\" + lstFiles.SelectedItem;
+			DisplayFilesAndDirs(); }
 } }

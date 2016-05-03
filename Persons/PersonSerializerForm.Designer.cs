@@ -35,6 +35,7 @@
 			this.lstFiles = new System.Windows.Forms.ListBox();
 			this.txtPath = new System.Windows.Forms.TextBox();
 			this.lblPath = new System.Windows.Forms.Label();
+			this.btnFolderUp = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// txtName
@@ -61,7 +62,7 @@
 			// lblName
 			// 
 			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(12, 15);
+			this.lblName.Location = new System.Drawing.Point(22, 15);
 			this.lblName.Name = "lblName";
 			this.lblName.Size = new System.Drawing.Size(35, 13);
 			this.lblName.TabIndex = 3;
@@ -79,7 +80,7 @@
 			// lblPhone
 			// 
 			this.lblPhone.AutoSize = true;
-			this.lblPhone.Location = new System.Drawing.Point(12, 67);
+			this.lblPhone.Location = new System.Drawing.Point(19, 67);
 			this.lblPhone.Name = "lblPhone";
 			this.lblPhone.Size = new System.Drawing.Size(38, 13);
 			this.lblPhone.TabIndex = 5;
@@ -118,35 +119,46 @@
 			// lstFiles
 			// 
 			this.lstFiles.FormattingEnabled = true;
-			this.lstFiles.Location = new System.Drawing.Point(15, 185);
+			this.lstFiles.Location = new System.Drawing.Point(15, 159);
 			this.lstFiles.Name = "lstFiles";
 			this.lstFiles.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-			this.lstFiles.Size = new System.Drawing.Size(285, 264);
+			this.lstFiles.Size = new System.Drawing.Size(285, 290);
 			this.lstFiles.TabIndex = 9;
 			this.lstFiles.DoubleClick += new System.EventHandler(this.lstFiles_DoubleClick);
 			// 
 			// txtPath
 			// 
-			this.txtPath.Location = new System.Drawing.Point(63, 147);
+			this.txtPath.Location = new System.Drawing.Point(63, 133);
 			this.txtPath.Name = "txtPath";
-			this.txtPath.Size = new System.Drawing.Size(237, 20);
+			this.txtPath.Size = new System.Drawing.Size(200, 20);
 			this.txtPath.TabIndex = 10;
 			this.txtPath.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EnterOnPath);
 			// 
 			// lblPath
 			// 
 			this.lblPath.AutoSize = true;
-			this.lblPath.Location = new System.Drawing.Point(12, 150);
+			this.lblPath.Location = new System.Drawing.Point(28, 136);
 			this.lblPath.Name = "lblPath";
 			this.lblPath.Size = new System.Drawing.Size(29, 13);
 			this.lblPath.TabIndex = 11;
 			this.lblPath.Text = "Path";
+			// 
+			// btnFolderUp
+			// 
+			this.btnFolderUp.Location = new System.Drawing.Point(270, 132);
+			this.btnFolderUp.Name = "btnFolderUp";
+			this.btnFolderUp.Size = new System.Drawing.Size(30, 22);
+			this.btnFolderUp.TabIndex = 12;
+			this.btnFolderUp.Text = "UP";
+			this.btnFolderUp.UseVisualStyleBackColor = true;
+			this.btnFolderUp.Click += new System.EventHandler(this.btnFolderUp_Click);
 			// 
 			// PersonSerializationForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(314, 461);
+			this.Controls.Add(this.btnFolderUp);
 			this.Controls.Add(this.lblPath);
 			this.Controls.Add(this.txtPath);
 			this.Controls.Add(this.lstFiles);
@@ -181,5 +193,6 @@
 		private System.Windows.Forms.ListBox lstFiles;
 		private System.Windows.Forms.TextBox txtPath;
 		private System.Windows.Forms.Label lblPath;
+		private System.Windows.Forms.Button btnFolderUp;
 	}
 }

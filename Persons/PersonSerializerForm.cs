@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PersonSerializer {
@@ -11,23 +12,23 @@ namespace PersonSerializer {
 
 		public PersonSerializationForm() { InitializeComponent(); }
 
-		private void PersonSerializationForm_Load(object sender, System.EventArgs e) {
+		private void PersonSerializationForm_Load(object sender, EventArgs e) {
 			if (File.Exists(_fileName)) { DisplayPerson(); }
 			DisplayFilesAndDirs(); }
 
-		private void btnSave_Click (object sender, System.EventArgs e) {
+		private void btnSave_Click (object sender, EventArgs e) {
 			var person = new Person(txtName.Text, txtAddress.Text, txtPhone.Text);
 			_serial.Serialize(person);
 			DisplayFilesAndDirs();
 			MessageBox.Show($"{txtName.Text} was saved successfully."); }
 
-		private void btnNext_Click(object sender, System.EventArgs e) {
+		private void btnNext_Click(object sender, EventArgs e) {
 			_i++;
 			_fileName = $"person{_i.ToString("D2")}.dat";
 			DisplayPerson ();
 			if (!File.Exists(_fileName)) { _i--; } }
 
-		private void btnPrevious_Click(object sender, System.EventArgs e) {
+		private void btnPrevious_Click(object sender, EventArgs e) {
 			_i--;
 			_fileName = $"person{_i.ToString("D2")}.dat";
 			DisplayPerson ();
@@ -43,7 +44,7 @@ namespace PersonSerializer {
 
 		private void DisplayFilesAndDirs() {
 			txtPath.Text = _path;
-			if (Directory.Exists(txtPath.Text)) {
+			if (Directory.Exists(_path)) {
 				DirectoryInfo dirs = new DirectoryInfo(txtPath.Text);
 				object[] fileEntries = dirs.GetFileSystemInfos();
 				lstFiles.Items.Clear();
@@ -55,7 +56,14 @@ namespace PersonSerializer {
 				_path = txtPath.Text;
 				DisplayFilesAndDirs (); } }
 
-		private void lstFiles_DoubleClick (object sender, System.EventArgs e) {
-			_path += @"\" + lstFiles.SelectedItem;
-			DisplayFilesAndDirs(); }
+		private void lstFiles_DoubleClick(object sender, EventArgs e) {
+			if (Directory.Exists(_path + @"\" + lstFiles.SelectedItem)) {
+				_path += @"\" + lstFiles.SelectedItem;
+				DisplayFilesAndDirs(); }
+			else { MessageBox.Show(@"The selected item is not a directory!"); } }
+
+			private
+			void btnFolderUp_Click (object sender, EventArgs e) {
+			_path = _path.Substring(0, _path.LastIndexOf(@"\", StringComparison.Ordinal));
+			DisplayFilesAndDirs (); }
 } }
